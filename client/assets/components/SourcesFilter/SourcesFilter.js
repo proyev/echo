@@ -28,6 +28,6 @@ export default function SourcesFilter(props) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: 'grey'
+    backgroundColor: '#4B1183'
   }
 });

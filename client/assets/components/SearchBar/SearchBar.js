@@ -38,10 +38,10 @@ export default function SearchBar(props) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#E0AAFF',
+    backgroundColor: '#4B1183',
     flex: .07,
     flexDirection: 'row',
-    opacity: .5,
+    // opacity: .5,
   },
   iconContainer: {
     alignItems: 'center',
