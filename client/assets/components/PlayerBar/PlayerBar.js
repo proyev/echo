@@ -1,9 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Pressable  } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function PlayerBar(props) {
   return (
     <View style={styles.playerBar}>
+      <LinearGradient
+        colors={['#240046', '#E0AAFF']}
+        style={styles.background}
+      >
       <View style={styles.elementsContainer}>
         <View style={styles.songData}>
           <Pressable
@@ -36,18 +41,23 @@ export default function PlayerBar(props) {
       <View style={styles.statusBar}>
         <View style={styles.progress}></View>
       </View>
+    </LinearGradient>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   playerBar: {
-    backgroundColor: '#240046',
+    // backgroundColor: '#240046',
     //remove height later on
     paddingHorizontal: '2.5%',
     paddingTop: '2.5%',
     height: 75,
     width: '100%'
+  },
+  background: {
+    flex: 1,
+    // position: 'absolute',
   },
   elementsContainer: {
     flex: .95,
