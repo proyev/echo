@@ -7,11 +7,9 @@ export default function SearchType(props) {
   return (
     <TouchableOpacity
       style={[styles.pill, active && styles.activePill]}
-      onPress={() => !active ? setActive(true) : setActive(false)}
+      onPress={() => setActive(!active)}
     >
-      <View style={styles.innerPill}>
-        <Text style={styles.filter}>{props.type}</Text>
-      </View>
+      <Text style={styles.filter}>{props.type}</Text>
     </TouchableOpacity>
   )
 }
@@ -19,21 +17,17 @@ export default function SearchType(props) {
 const styles = StyleSheet.create({
   pill: {
     borderColor: '#E0AAFF',
-    borderRadius: 50,
-    borderWidth: 2,
-    marginHorizontal: '10%',
-    width: 'auto'
+    borderRadius: 40,
+    borderWidth: 1,
+    marginHorizontal: 6.5,
+    paddingVertical: 6.5,
+    paddingHorizontal: 15,
   },
   activePill: {
     backgroundColor: '#0096C7',
     borderColor: '#00B4D8'
   },
-  innerPill: {
-    alignSelf: 'center',
-    padding: 12
-  },
   filter: {
-    color: 'ghostwhite',
-    margin: '10%'
+    color: 'ghostwhite'
   }
 })
