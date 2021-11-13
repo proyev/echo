@@ -1,48 +1,71 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Pressable } from 'react-native';
+
 import { LinearGradient } from 'expo-linear-gradient';
+import { BlurView } from 'expo-blur';
 
 export default function PlayerBar(props) {
   return (
-    // <View style={styles.playerBar}>
-      <LinearGradient
-        colors={['#240046', '#4B1183']}
-        style={[styles.playerBar, styles.background]}
+    <LinearGradient
+      colors={['#240046', '#4B1183']}
+      style={[styles.playerBar, styles.background]}
+    >
+      <View
+        intensity={15}
+        style={styles.elementsContainer}
       >
-        <View style={styles.elementsContainer}>
-          <View style={styles.songData}>
-            <Pressable
-              style={styles.album}
-            >
-              <View style={styles.cover} />
-            </Pressable>
-            <Pressable style={styles.songInfo}>
-              <Text style={styles.title}>Kyle on Acid</Text>
-              <Text style={styles.artist}>CLTX</Text>
-            </Pressable>
-          </View>
-          <TouchableOpacity
-            style={styles.iconContainer}
+        <BlurView
+          intensity={75}
+          tint='dark'
+          style={styles.songData}
+        >
+          <Pressable
+            style={styles.album}
           >
-            <Image
-              style={styles.icon}
-              source={require('../../icon/like_i.png')}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.iconContainer}
-          >
-            <Image
-              style={styles.icon}
-              source={require('../../icon/pause_sm.png')}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.statusBar}>
-          <View style={styles.progress}></View>
-        </View>
-      </LinearGradient>
-    // {/* </View> */}
+            <View style={styles.cover} />
+          </Pressable>
+          <Pressable style={styles.songInfo}>
+            <Text style={styles.title}>Kyle on Acid</Text>
+            <Text style={styles.artist}>CLTX</Text>
+          </Pressable>
+          <BlurView
+            intensity={5}
+            tint='dark'
+            style={{
+              position: 'absolute',
+              top: 0,
+              width: '100%'
+            }}
+          />
+        </BlurView>
+        <TouchableOpacity
+          style={styles.iconContainer}
+        >
+          <Image
+            style={styles.icon}
+            source={require('../../icon/like_i.png')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.iconContainer}
+        >
+          <Image
+            style={styles.icon}
+            source={require('../../icon/pause_sm.png')}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.statusBar}>
+        <View style={styles.progress}></View>
+      </View>
+      {/* <BlurView
+        intensity={75}
+        tint='dark'
+        style={{
+          flex: 1,
+        }}
+      /> */}
+    </LinearGradient>
   )
 }
 
