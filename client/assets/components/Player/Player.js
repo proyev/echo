@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, Pressable, Text } from 'react-native';
+import { View, Image, ImageBackground, StyleSheet, TouchableOpacity, Pressable, Text } from 'react-native';
+
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Player(props) {
 
   return (
-    <View>
+    <View style={styles.container}>
       <LinearGradient
           colors={['#10002B', '#240046', '#3C096C']}
           style={styles.header}
@@ -162,6 +164,9 @@ export default function Player(props) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   header: {
     flexDirection: 'row',
     flex: .1
