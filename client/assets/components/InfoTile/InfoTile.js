@@ -18,10 +18,16 @@ export default function InfoTile(props) {
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
-        <Image style={styles.button} />
+        <Image
+          source={require('../../icon/artist.png')}
+          style={styles.button}
+        />
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
-        <Image style={styles.button} />
+        <Image
+          source={require('../../icon/like_i.png')}
+          style={styles.button}
+        />
       </TouchableOpacity>
     </View>
   )
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: 23,
   },
   songImg: {
-    borderRadius: 5
+    borderRadius: 10
   },
   infoContainer: {
     flex: .6,
@@ -80,10 +86,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: .1,
     justifyContent: 'center',
-    marginHorizontal: 10
+    marginRight: 10
   },
   button: {
-    backgroundColor: 'white',
     height: 24,
     width: 24
   }
