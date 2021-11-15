@@ -30,11 +30,9 @@ export default function SearchTypesFilter(props) {
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1
-  },
   container: {
     alignItems: 'center',
-    backgroundColor: '#3C096C'
+    backgroundColor: '#3C096C',
+    paddingTop: 2.5
   }
 })

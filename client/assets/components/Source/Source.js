@@ -23,7 +23,7 @@ export default function Source(props) {
 
 const styles = StyleSheet.create({
   bubble: {
-    marginHorizontal: 8
+    marginHorizontal: 10
   },
   inactive: {
     borderColor: '#E0AAFF'

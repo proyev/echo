@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     borderColor: '#E0AAFF',
     borderRadius: 40,
     borderWidth: 1,
-    marginHorizontal: 6.5,
-    paddingVertical: 6.5,
+    marginHorizontal: 10,
+    paddingVertical: 3,
     paddingHorizontal: 15,
   },
   activePill: {
