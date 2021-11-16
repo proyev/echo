@@ -3,16 +3,30 @@ import { View, Image, ImageBackground, StyleSheet, TouchableOpacity, Pressable, 
 
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { GestureHandlerRootView, PanGestureHandler, State } from 'react-native-gesture-handler';
+
 export default function Player(props) {
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
+      <PanGestureHandler
+        minDist={225}
+        minDeltaY={200}
+        onGestureEvent={() => props.navigation.navigate('library')}
+      >
+    <Pressable
+      style={styles.container}
+      onPress={() => console.log('Pause or play')}
+    >
       <LinearGradient
           colors={['#10002B', '#240046', '#3C096C']}
           style={styles.header}
         >
           <View style={styles.headerIconContainer}>
-            <TouchableOpacity style={styles.headerIcon}>
+            <TouchableOpacity
+              style={styles.headerIcon}
+              onPress={() => props.navigation.navigate('Library')}
+            >
               <Image
                 style={styles.headerIcon}
                 source={require('../../icon/up.png')}
@@ -69,8 +83,13 @@ export default function Player(props) {
         <View style={styles.trackInfo}>
           <View style={styles.buttonContainer} />
           <View style={styles.songData}>
-            <Pressable style={styles.songNameContainer}>
-              <Text style={styles.songName}>Kylie On Acid</Text>
+            <Pressable style={[styles.songNameContainer, {
+              backgroundColor: 'red'
+            }]}>
+              <Text
+                style={styles.songName}
+
+              >Kylie On Acid</Text>
             </Pressable>
             <Pressable style={styles.artistContainer}>
               <Text style={styles.artist}>CLTX</Text>
@@ -158,7 +177,11 @@ export default function Player(props) {
         <View style={styles.placeholderCP} />
       </LinearGradient>
 
-    </View>
+    </Pressable>
+
+
+      </PanGestureHandler>
+    </GestureHandlerRootView>
 
   );
 }
