@@ -4,17 +4,26 @@ import { Image, View, TouchableOpacity, Pressable, StyleSheet, Text } from 'reac
 export default function InfoTile(props) {
   return (
     <View style={styles.tile}>
-      <TouchableOpacity style={styles.innerTile}>
-        <Pressable style={styles.imgContainer}>
-          <Image style={[styles.img, styles.songImg]} />
-        </Pressable>
+      <TouchableOpacity
+        style={styles.innerTile}
+      >
+        {
+          !props.albumContent && (
+            <Pressable style={styles.imgContainer}>
+              <Image style={[styles.img,
+                props.type === 'playlist' && styles.playlistImg,
+                props.type === 'artist' && styles.artistImg
+              ]} />
+            </Pressable>
+          )
+        }
         <View style={styles.infoContainer}>
           <View style={styles.nameContainer}>
             <Text style={styles.name}>Name</Text>
           </View>
-          <View style={styles.metaContainer}>
-            <Text style={styles.meta}>Artist</Text>
-          </View>
+            <View style={styles.metaContainer}>
+              <Text style={styles.meta}>Artist</Text>
+            </View>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer}>
@@ -53,14 +62,15 @@ const styles = StyleSheet.create({
   },
   img: {
     backgroundColor: 'white',
+    borderRadius: 10,
     height: 46,
     width: 46
   },
   artistImg: {
     borderRadius: 23,
   },
-  songImg: {
-    borderRadius: 10
+  playlistImg: {
+    borderRadius: 0
   },
   infoContainer: {
     flex: .6,
