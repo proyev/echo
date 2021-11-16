@@ -10,6 +10,7 @@ import Filters from './assets/components/Filters/Filters';
 import PlayerBar from './assets/components/PlayerBar/PlayerBar';
 import Artist from './assets/components/Artist/Artist';
 import Player from './assets/components/Player/Player';
+import Results from './assets/components/Results/Results';
 
 export default function App() {
   const [input, setInput] = React.useState('');
@@ -41,7 +42,7 @@ export default function App() {
         input ? <Filters />
         : <View />
       }
-      <Artist />
+      <Results type={'artist'}/>
     </SafeAreaView>
     // </KeyboardAvoidingView>
   );
