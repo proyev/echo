@@ -4,7 +4,9 @@ import { SectionList, Text, StyleSheet, FlatList, View } from 'react-native';
 import InfoTile from '../InfoTile/InfoTile';
 import BigInfoTile from '../BigInfoTile/BigInfoTile';
 
-export default function ArtistContent(props) {
+export default function Content(props) {
+  //prop.type -> artist and so on...
+
   return (
     <SectionList
       stickySectionHeadersEnabled={false}
