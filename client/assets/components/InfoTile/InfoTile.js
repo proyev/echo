@@ -1,43 +1,62 @@
 import React from 'react';
 import { Image, View, TouchableOpacity, Pressable, StyleSheet, Text } from 'react-native';
 
-export default function InfoTile(props) {
+export default function InfoTile({ type='albumContent', data }) {
+
   return (
     <View style={styles.tile}>
       <TouchableOpacity
         style={styles.innerTile}
+        onPress={() => alert('Open/Play smth')}
       >
         {
-          !props.albumContent && (
-            <Pressable style={styles.imgContainer}>
+          type !== 'albumContent' && (
+            <Pressable
+              disabled={type !== 'song'}
+              style={styles.imgContainer}
+              onPress={() => alert('Open album')}
+            >
               <Image style={[styles.img,
-                props.type === 'playlist' && styles.playlistImg,
-                props.type === 'artist' && styles.artistImg
+                (type === 'playlist' || type === 'album') && styles.playlistImg,
+                type === 'artist' && styles.artistImg
               ]} />
             </Pressable>
           )
         }
-        <View style={styles.infoContainer}>
-          <View style={styles.nameContainer}>
+        <View style={[styles.infoContainer,
+            (type === 'artist' || type === 'albumContent') && {flex: .8}]}>
+          <View style={[styles.nameContainer,
+            (type === 'artist' || type === 'playlist') && styles.artistStyle]}
+          >
             <Text style={styles.name}>Name</Text>
           </View>
-            <View style={styles.metaContainer}>
-              <Text style={styles.meta}>Artist</Text>
-            </View>
+          {
+            type !== 'playlist' && type !== 'artist' && (
+              <View style={styles.metaContainer}>
+                <Text style={styles.meta}>Artist</Text>
+              </View>
+            )
+          }
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonContainer}>
-        <Image
-          source={require('../../icon/artist.png')}
-          style={styles.button}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonContainer}>
-        <Image
-          source={require('../../icon/like_i.png')}
-          style={styles.button}
-        />
-      </TouchableOpacity>
+      {
+        type !== 'artist' && (
+          <>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Image
+                source={require('../../icon/artist.png')}
+                style={styles.button}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Image
+                source={require('../../icon/like_i.png')}
+                style={styles.button}
+              />
+            </TouchableOpacity>
+          </>
+        )
+      }
     </View>
   )
 }
@@ -79,6 +98,10 @@ const styles = StyleSheet.create({
     flex: .5,
     justifyContent: 'flex-end',
     paddingHorizontal: 5
+  },
+  artistStyle: {
+    flex: 1,
+    justifyContent: 'center'
   },
   name: {
     color: 'ghostwhite',
